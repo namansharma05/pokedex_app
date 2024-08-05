@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_app/pages/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -11,17 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'PokeDex',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.lightGreen,
+    return ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'PokeDex',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightGreen,
+          ),
+          useMaterial3: true,
+          textTheme: GoogleFonts.quattrocentoSansTextTheme(),
         ),
-        useMaterial3: true,
-        textTheme: GoogleFonts.quattrocentoSansTextTheme(),
+        home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }
