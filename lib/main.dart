@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pokedex_app/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex_app/services/http_service.dart';
 
-void main() {
+void main() async {
+  await _setupServices();
   runApp(const MyApp());
+}
+
+Future<void> _setupServices() async {
+  GetIt.instance.registerSingleton<HTTPService>(
+    HTTPService(),
+  );
 }
 
 class MyApp extends StatelessWidget {
